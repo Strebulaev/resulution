@@ -1,7 +1,7 @@
 <div class="job-platforms-container">
   <h2>{{ 'JOB_PLATFORMS.TITLE' | translate }}</h2>
   
-  <div class="platforms-grid">
+ <div class="platforms-grid">
     <!-- HH.ru карточка -->
     <div class="platform-card hh-card">
       <div class="platform-header">
@@ -26,6 +26,7 @@
             {{ isLoading ? ('JOB_PLATFORMS.CONNECTING' | translate) : 
                (isHHConnected ? ('JOB_PLATFORMS.DISCONNECT' | translate) : ('JOB_PLATFORMS.CONNECT_HH' | translate)) }}
           </button>
+          <div class="platform-note">Не работает</div>
         </div>
       </div>
     </div>
