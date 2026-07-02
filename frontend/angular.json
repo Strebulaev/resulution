@@ -31,7 +31,6 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "outputHashing": "all",
-            "outputPath": "dist",
             "baseHref": "/",
             "deployUrl": "/",
             "assets": [
@@ -79,7 +78,7 @@
                 }
               ],
               "outputHashing": "all",
-              "outputPath": "dist/resume"
+              "outputPath": "dist"
             },
             "development": {
               "optimization": false,
