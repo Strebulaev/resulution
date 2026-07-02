@@ -1,5 +1,6 @@
 @use "tailwindcss";
 @use "primeicons/primeicons.css";
+@use "./styles/tokens.scss";
 
 * {
   box-sizing: border-box;

@@ -31,7 +31,6 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "outputHashing": "all",
-            "outputPath": "dist",
             "baseHref": "/",
             "deployUrl": "/",
             "assets": [

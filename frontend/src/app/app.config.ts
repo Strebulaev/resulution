@@ -184,43 +184,6 @@ export const appConfig: ApplicationConfig = {
         suffix: '.json'
       })
     }),
-    provideRouter(routes),
-    provideHttpClient(withInterceptorsFromDi()),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeApp,
-      deps: [ConfigService, SupabaseService],
-      multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeTranslation,
-      deps: [TranslateService, LanguageService],
-      multi: true
-    },
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: AuthInterceptor, 
-      multi: true,
-    },
-    provideAnimationsAsync(),
-    providePrimeNG(
-      {
-        theme: {
-          preset: Aura
-        }
-      }
-    ),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    MarkdownService,
-    MessageService,
-    { provide: SECURITY_CONTEXT, useValue: 0 },
-    provideTranslateService({
-      loader: provideTranslateHttpLoader({
-        prefix: '/locale/messages.',
-        suffix: '.json'
-      })
-    }),
     PrimeNGTranslationService
   ]
 };
