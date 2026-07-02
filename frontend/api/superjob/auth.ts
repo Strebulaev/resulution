@@ -22,35 +22,47 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (req.method === 'POST') {
-    const { code, userId } = req.body;
-
-    if (!code || !userId) {
-      return res.status(400).json({ error: 'Missing code or userId' });
-    }
+    const { code, refresh_token } = req.body;
 
     if (!SJ_CLIENT_ID || !SJ_CLIENT_SECRET) {
       return res.status(500).json({ error: 'SuperJob configuration missing' });
     }
 
     try {
-      // Exchange code for access token
-      const tokenResponse = await fetch('https://api.superjob.ru/2.0/oauth2/access_token/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
+      let params: URLSearchParams;
+
+      if (code) {
+        // Exchange code for access token
+        params = new URLSearchParams({
           grant_type: 'authorization_code',
           client_id: SJ_CLIENT_ID,
           client_secret: SJ_CLIENT_SECRET,
           code: code,
           redirect_uri: `${BASE_URL}/api/superjob/callback`
-        })
+        });
+      } else if (refresh_token) {
+        // Refresh token
+        params = new URLSearchParams({
+          grant_type: 'refresh_token',
+          client_id: SJ_CLIENT_ID,
+          client_secret: SJ_CLIENT_SECRET,
+          refresh_token: refresh_token
+        });
+      } else {
+        return res.status(400).json({ error: 'Missing code or refresh_token' });
+      }
+
+      const tokenResponse = await fetch('https://api.superjob.ru/2.0/oauth2/access_token/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params
       });
 
       if (!tokenResponse.ok) {
         const errorText = await tokenResponse.text();
-        throw new Error(`Token exchange failed: ${tokenResponse.status} - ${errorText}`);
+        throw new Error(`Token request failed: ${tokenResponse.status} - ${errorText}`);
       }
 
       const tokenData = await tokenResponse.json();

@@ -85,17 +85,70 @@
                 class="p-button-help">
           <i class="pi pi-plug"></i>
         </button>
+
+        <button *ngIf="isCustomProvider(provider.id)"
+                pButton
+                icon="pi pi-trash"
+                (click)="removeProvider(provider.id)"
+                class="p-button-danger p-button-text">
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="connection-help">
-    <h4>{{ 'AI_CONFIG.HELP.TITLE' | translate }}</h4>
-    <ul>
-      <li>{{ 'AI_CONFIG.HELP.CHECK_API_KEY' | translate }}</li>
-      <li>{{ 'AI_CONFIG.HELP.CHECK_PERMISSIONS' | translate }}</li>
-      <li>{{ 'AI_CONFIG.HELP.TOGETHER_AI_AUTO' | translate }}</li>
-      <li>{{ 'AI_CONFIG.HELP.CORS_ERRORS' | translate }}</li>
-    </ul>
+  <div class="add-provider-section">
+    <button *ngIf="!showAddProviderForm"
+            pButton
+            [label]="'AI_CONFIG.BUTTONS.ADD_PROVIDER' | translate"
+            icon="pi pi-plus"
+            (click)="toggleAddProviderForm()"
+            class="p-button-outlined w-full">
+    </button>
+
+    <div class="add-provider-form" *ngIf="showAddProviderForm">
+      <h4>{{ 'AI_CONFIG.ADD_PROVIDER.TITLE' | translate }}</h4>
+
+      <div class="config-field">
+        <label>{{ 'AI_CONFIG.ADD_PROVIDER.NAME' | translate }}:</label>
+        <input type="text"
+               [(ngModel)]="newProviderName"
+               [placeholder]="'AI_CONFIG.ADD_PROVIDER.NAME_PLACEHOLDER' | translate">
+      </div>
+
+      <div class="config-field">
+        <label>{{ 'AI_CONFIG.ADD_PROVIDER.BASE_URL' | translate }}:</label>
+        <input type="text"
+               [(ngModel)]="newProviderBaseUrl"
+               [placeholder]="'AI_CONFIG.ADD_PROVIDER.BASE_URL_PLACEHOLDER' | translate">
+      </div>
+
+      <div class="config-field">
+        <label>{{ 'AI_CONFIG.ADD_PROVIDER.API_KEY' | translate }}:</label>
+        <input type="password"
+               [(ngModel)]="newProviderApiKey"
+               [placeholder]="'AI_CONFIG.ADD_PROVIDER.API_KEY_PLACEHOLDER' | translate">
+      </div>
+
+      <div class="config-field">
+        <label>{{ 'AI_CONFIG.ADD_PROVIDER.MODELS' | translate }}:</label>
+        <input type="text"
+               [(ngModel)]="newProviderModels"
+               [placeholder]="'AI_CONFIG.ADD_PROVIDER.MODELS_PLACEHOLDER' | translate">
+      </div>
+
+      <div class="config-actions">
+        <button pButton
+                [label]="'AI_CONFIG.BUTTONS.SAVE' | translate"
+                icon="pi pi-check"
+                (click)="addCustomProvider()"
+                class="p-button-success">
+        </button>
+        <button pButton
+                [label]="'AI_CONFIG.BUTTONS.CANCEL' | translate"
+                (click)="toggleAddProviderForm()"
+                class="p-button-secondary">
+        </button>
+      </div>
+    </div>
   </div>
 </div>

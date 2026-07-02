@@ -228,22 +228,30 @@ export class AutomationDashboardComponent implements OnInit, OnDestroy {
   private updateCharts(): void {
     if (!this.analyticsData) return;
 
-    // Application status chart
+    const style = getComputedStyle(document.documentElement);
+    const infoLight = style.getPropertyValue('--color-info-light').trim();
+    const muted = style.getPropertyValue('--color-muted').trim();
+    const info = style.getPropertyValue('--color-info').trim();
+    const primaryLight = style.getPropertyValue('--color-primary-light').trim();
+    const primary = style.getPropertyValue('--color-primary').trim();
+    const brandHh = style.getPropertyValue('--color-brand-hh').trim();
+    const primaryHover = style.getPropertyValue('--color-primary-hover').trim();
+    const brandHhHover = style.getPropertyValue('--color-brand-hh-hover').trim();
+
     this.applicationChartData = {
       labels: ['Отправлено', 'Просмотрено', 'Отклик', 'Собеседование', 'Оффер'],
       datasets: [{
         data: [
           this.analyticsData.jobApplications,
-          Math.floor(this.analyticsData.jobApplications * 0.3), // Estimated views
+          Math.floor(this.analyticsData.jobApplications * 0.3),
           this.analyticsData.interviews,
           this.analyticsData.interviews,
           this.analyticsData.offers
         ],
-        backgroundColor: ['#e3f2fd', '#bbdefb', '#90caf9', '#64b5f6', '#42a5f5']
+        backgroundColor: [infoLight, muted, info, primaryLight, primary]
       }]
     };
 
-    // Platform comparison chart
     this.platformChartData = {
       labels: ['HH.ru', 'SuperJob'],
       datasets: [{
@@ -252,14 +260,14 @@ export class AutomationDashboardComponent implements OnInit, OnDestroy {
           this.analyticsData.platformStats.hh.applications,
           this.analyticsData.platformStats.superjob.applications
         ],
-        backgroundColor: ['#1976d2', '#f57c00']
+        backgroundColor: [primary, brandHh]
       }, {
         label: 'Отклики с ответом',
         data: [
           this.analyticsData.platformStats.hh.responses,
           this.analyticsData.platformStats.superjob.responses
         ],
-        backgroundColor: ['#0d47a1', '#e65100']
+        backgroundColor: [primaryHover, brandHhHover]
       }]
     };
   }

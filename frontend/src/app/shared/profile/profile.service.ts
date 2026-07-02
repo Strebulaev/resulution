@@ -77,6 +77,7 @@ export class ProfileService {
       career_level: 'junior'
     };
   }
+
   exportToYaml(person: Person): string {
     return yaml.dump({ person }, { skipInvalid: true });
   }

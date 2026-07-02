@@ -316,7 +316,7 @@ export class ResumeGenerationComponent {
           Опиши профессиональный опыт для резюме:
           Должность: ${exp.position}
           Компания: ${exp.company}
-          Период: ${exp.startDate} - ${exp.endDate || 'по настоящее время'}
+          Период: ${exp.start_date} - ${exp.end_date || 'по настоящее время'}
           Обязанности: ${(exp.tasks || []).join('; ')}
           Достижения: ${(exp.achievements || []).map((a: any) => a.name).join('; ')}
           Технологии: ${(exp.stack || []).join(', ')}
@@ -337,8 +337,8 @@ export class ResumeGenerationComponent {
       experience: (profile.experience || []).map((exp: any, i: number) => ({
         position: exp.position,
         company: exp.company,
-        start: exp.startDate,
-        end: exp.endDate || null,
+        start: exp.start_date,
+        end: exp.end_date || null,
         description: experienceTexts[i],
         achievements: (exp.achievements || []).map((a: any) => a.name)
       })),

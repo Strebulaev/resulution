@@ -45,7 +45,7 @@ import { ConfigService } from './shared/config/config.service';
     PopoverModule,
     AiConfigModalComponent,
     DialogModule,
-    ErrorToastComponent,
+    // ErrorToastComponent,
     PersonalDataConsentComponent,
     CookiesConsentComponent,
     NotificationBellComponent
@@ -147,7 +147,7 @@ export class App implements OnInit {
       '/cover-letter/generate': 'Сопроводительное письмо',
       '/interview-prep': 'Подготовка к собеседованию',
       '/vacancy-search': 'Поиск вакансий',
-      '/billing/pricing': 'Тарифы',
+      // '/billing/pricing': 'Тарифы',
       '/profile/view': 'Профиль'
     };
     return routes[url] || 'Rezulution';
@@ -263,11 +263,11 @@ export class App implements OnInit {
           { 
             label: this.translate.instant('MAIN_MENU.PROFILE.EDIT'), 
             routerLink: '/profile/edit'
-          },
-          {
-            label: this.translate.instant('BILLING.MANAGE_SUBSCRIPTION'),
-            routerLink: '/billing/subscription',
           }
+          // {
+          //   label: this.translate.instant('BILLING.MANAGE_SUBSCRIPTION'),
+          //   routerLink: '/billing/subscription',
+          // }
         ]
       },
       {
@@ -302,11 +302,11 @@ export class App implements OnInit {
       {
         label: this.translate.instant('MAIN_MENU.ABOUT.name'),
         routerLink: '/about'
-      },
-      {
-        label: this.translate.instant('BILLING.TARIFS'),
-        routerLink: '/billing/pricing',
       }
+      // {
+      //   label: this.translate.instant('BILLING.TARIFS'),
+      //   routerLink: '/billing/pricing',
+      // }
     ];
   }
 

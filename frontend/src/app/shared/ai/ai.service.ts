@@ -44,10 +44,8 @@ export class AIService {
 
   private async initializeProviders(): Promise<void> {
     try {
-      // Сначала загружаем конфиг
       const config = await this.configService.loadConfig();
       
-      // Инициализируем провайдеров
       this.providers = [
         {
           id: 'together',
@@ -84,13 +82,11 @@ export class AIService {
         }
       ];
 
-      // Пытаемся загрузить сохраненную конфигурацию
       const savedConfig = localStorage.getItem('ai_providers_config');
       if (savedConfig) {
         try {
           const parsedConfig = JSON.parse(savedConfig);
           if (parsedConfig.providers) {
-            // Обновляем провайдеров из сохраненной конфигурации
             this.providers.forEach(provider => {
               const savedProvider = parsedConfig.providers.find((p: any) => p.id === provider.id);
               if (savedProvider) {
@@ -99,12 +95,22 @@ export class AIService {
                 if (savedProvider.baseUrl) provider.baseUrl = savedProvider.baseUrl;
               }
             });
-          }
-          
-          if (parsedConfig.currentProviderId) {
-            const savedCurrentProvider = this.providers.find(p => p.id === parsedConfig.currentProviderId && p.isConfigured);
-            if (savedCurrentProvider) {
-              this.currentProvider = savedCurrentProvider;
+
+            if (parsedConfig.customProviders) {
+              parsedConfig.customProviders.forEach((cp: AIProvider) => {
+                if (!this.providers.find(p => p.id === cp.id)) {
+                  this.providers.push({ ...cp, isDefault: false });
+                }
+              });
+            }
+
+            if (parsedConfig.currentProviderId) {
+              const savedCurrentProvider = this.providers.find(
+                p => p.id === parsedConfig.currentProviderId && p.isConfigured
+              );
+              if (savedCurrentProvider) {
+                this.currentProvider = savedCurrentProvider;
+              }
             }
           }
         } catch (e) {
@@ -112,7 +118,6 @@ export class AIService {
         }
       }
 
-      // Если нет сохраненного текущего провайдера, но Together AI настроен - используем его
       if (!this.currentProvider) {
         const togetherProvider = this.providers.find(p => p.id === 'together');
         if (togetherProvider?.isConfigured) {
@@ -201,6 +206,38 @@ export class AIService {
 
   isAnyProviderConfigured(): boolean {
     return this.providers.some(provider => provider.isConfigured);
+  }
+
+  addCustomProvider(name: string, baseUrl: string, apiKey: string, models: string[]): boolean {
+    const id = 'custom-' + Date.now();
+    const provider: AIProvider = {
+      id,
+      name,
+      baseUrl,
+      apiKey,
+      isConfigured: !!apiKey,
+      models: models.length ? models : ['default'],
+      isDefault: false
+    };
+    this.providers.push(provider);
+    this.saveProvidersConfig();
+    this.providersSubject.next([...this.providers]);
+    return true;
+  }
+  
+  removeProvider(providerId: string): boolean {
+    const provider = this.providers.find(p => p.id === providerId);
+    if (!provider || provider.isDefault) {
+      return false;
+    }
+    this.providers = this.providers.filter(p => p.id !== providerId);
+    if (this.currentProvider?.id === providerId) {
+      this.currentProvider = this.providers.find(p => p.isConfigured) || null;
+      this.currentProviderSubject.next(this.currentProvider);
+    }
+    this.saveProvidersConfig();
+    this.providersSubject.next([...this.providers]);
+    return true;
   }
 
 
@@ -310,8 +347,11 @@ export class AIService {
   }
 
   private saveProvidersConfig(): void {
+    const builtinProviders = this.providers.filter(p => p.isDefault || ['together', 'deepseek', 'openai', 'huggingface'].includes(p.id));
+    const customProviders = this.providers.filter(p => !builtinProviders.includes(p));
     const config = {
-      providers: this.providers,
+      providers: builtinProviders.map(p => ({ id: p.id, apiKey: p.apiKey, isConfigured: p.isConfigured, baseUrl: p.baseUrl })),
+      customProviders,
       currentProviderId: this.currentProvider?.id
     };
     localStorage.setItem('ai_providers_config', JSON.stringify(config));

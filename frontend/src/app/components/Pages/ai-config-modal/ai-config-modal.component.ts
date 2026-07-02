@@ -21,8 +21,14 @@ export class AiConfigModalComponent implements OnInit {
   
   providers: AIProvider[] = [];
   editingProvider: string | null = null;
-  originalProviderState: any = null;
+  originalProviderState: AIProvider | null = null;
   isLoading = false;
+
+  showAddProviderForm = false;
+  newProviderName = '';
+  newProviderBaseUrl = '';
+  newProviderApiKey = '';
+  newProviderModels = '';
 
   constructor(
     private aiService: AIService,
@@ -32,7 +38,6 @@ export class AiConfigModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Подписываемся на обновления провайдеров
     this.aiService.getProvidersObservable().subscribe(providers => {
       this.providers = providers;
     });
@@ -78,12 +83,29 @@ export class AiConfigModalComponent implements OnInit {
     this.aiService.testProviderConnection(providerId).subscribe({
       next: (success) => {
         if (success) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Подключение успешно',
+            detail: 'AI провайдер отвечает на запросы'
+          });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Ошибка подключения',
+            detail: 'Не удалось подключиться к AI провайдеру'
+          });
         }
       },
       error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ошибка подключения',
+          detail: error.message
+        });
       }
     });
   }
+        
   async connectTogetherAI(): Promise<void> {
     this.isLoading = true;
     try {
@@ -94,8 +116,6 @@ export class AiConfigModalComponent implements OnInit {
           summary: 'Together AI подключен и активирован',
           detail: 'Провайдер готов к использованию'
         });
-        
-        // Автоматически тестируем подключение после настройки
         setTimeout(() => {
           this.testConnection('together');
         }, 1000);
@@ -125,7 +145,6 @@ export class AiConfigModalComponent implements OnInit {
         detail: `${provider.name} успешно настроен`
       });
 
-      // Автоматически тестируем подключение после сохранения
       setTimeout(() => {
         this.testConnection(provider.id);
       }, 1000);
@@ -136,9 +155,87 @@ export class AiConfigModalComponent implements OnInit {
     this.editingProvider = null;
     this.originalProviderState = null;
   }
+
   isCurrentProvider(providerId: string): boolean {
     const current = this.aiService.getCurrentProvider();
     return current?.id === providerId;
+  }
+
+  isCustomProvider(providerId: string): boolean {
+    return providerId.startsWith('custom-');
+  }
+
+  removeProvider(providerId: string): void {
+    const provider = this.providers.find(p => p.id === providerId);
+    if (!provider) return;
+
+    const success = this.aiService.removeProvider(providerId);
+    if (success) {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Провайдер удален',
+        detail: `${provider.name} удален из списка`
+      });
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Ошибка',
+        detail: 'Невозможно удалить провайдера'
+      });
+    }
+  }
+
+  toggleAddProviderForm(): void {
+    this.showAddProviderForm = !this.showAddProviderForm;
+    if (!this.showAddProviderForm) {
+      this.resetNewProviderForm();
+    }
+  }
+
+  resetNewProviderForm(): void {
+    this.newProviderName = '';
+    this.newProviderBaseUrl = '';
+    this.newProviderApiKey = '';
+    this.newProviderModels = '';
+  }
+
+  addCustomProvider(): void {
+    if (!this.newProviderName.trim() || !this.newProviderBaseUrl.trim()) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Заполните поля',
+        detail: 'Название и Base URL обязательны'
+      });
+      return;
+    }
+
+    const models = this.newProviderModels
+      .split(',')
+      .map(m => m.trim())
+      .filter(m => m.length > 0);
+
+    const success = this.aiService.addCustomProvider(
+      this.newProviderName.trim(),
+      this.newProviderBaseUrl.trim(),
+      this.newProviderApiKey.trim(),
+      models
+    );
+
+    if (success) {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Провайдер добавлен',
+        detail: `${this.newProviderName} добавлен в список`
+      });
+      this.resetNewProviderForm();
+      this.showAddProviderForm = false;
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Ошибка',
+        detail: 'Не удалось добавить провайдера'
+      });
+    }
   }
 
   closeModal(): void {
