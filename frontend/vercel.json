@@ -1,5 +1,7 @@
 {
-  "headers": [
+    "buildCommand": "npm run vercel-build",
+    "outputDirectory": "dist",
+    "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
