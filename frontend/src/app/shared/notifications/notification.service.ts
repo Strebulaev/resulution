@@ -197,13 +197,13 @@ ${report.recommendations.map((rec: string) => `• ${rec}`).join('\n')}
   private formatEmailContent(notification: NotificationMessage): string {
     return `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2563eb;">${notification.title}</h2>
-        <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <p style="font-size: 16px; line-height: 1.6; color: #374151;">
+        <h2 style="color: #1E3A5F;">${notification.title}</h2>
+        <div style="background-color: #F8FAFC; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p style="font-size: 16px; line-height: 1.6; color: #0F172A;">
             ${notification.message.replace(/\n/g, '<br>')}
           </p>
         </div>
-        <div style="text-align: center; margin-top: 30px; color: #6b7280; font-size: 14px;">
+        <div style="text-align: center; margin-top: 30px; color: #475569; font-size: 14px;">
           <p>Rezulution - Автоматизация карьеры</p>
         </div>
       </div>

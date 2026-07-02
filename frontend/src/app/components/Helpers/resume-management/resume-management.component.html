@@ -32,7 +32,7 @@
   <!-- Резюме HH.ru -->
   <div *ngIf="activeTab === 'hh' && !isLoading" class="resumes-section">
     <div *ngIf="hhResumes.length === 0" class="empty-state">
-      <i class="pi pi-briefcase" style="font-size: 3rem; color: #6c757d;"></i>
+      <i class="pi pi-briefcase" style="font-size: 3rem; color: var(--color-foreground-tertiary);"></i>
       <h4>{{ 'RESUME.NO_HH_RESUMES' | translate }}</h4>
       <p>{{ 'RESUME.CONNECT_HH_HINT' | translate }}</p>
       <button pButton 
@@ -80,7 +80,7 @@
   <!-- Резюме SuperJob -->
   <div *ngIf="activeTab === 'superjob' && !isLoading" class="resumes-section">
     <div *ngIf="superJobResumes.length === 0" class="empty-state">
-      <i class="pi pi-briefcase" style="font-size: 3rem; color: #6c757d;"></i>
+      <i class="pi pi-briefcase" style="font-size: 3rem; color: var(--color-foreground-tertiary);"></i>
       <h4>{{ 'RESUME.NO_SUPERJOB_RESUMES' | translate }}</h4>
       <p>{{ 'RESUME.CONNECT_SUPERJOB_HINT' | translate }}</p>
       

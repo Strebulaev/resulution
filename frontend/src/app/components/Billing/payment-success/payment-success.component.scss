@@ -1,70 +1,76 @@
-.payment-success-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-    padding: 2rem;
+.payment-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: var(--spacing-8);
+}
+
+.payment-success .content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.payment-success .loading p {
+  margin-top: var(--spacing-4);
+  color: var(--color-foreground-secondary);
+}
+
+.payment-success .status-content {
+  background: var(--color-surface);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.payment-success .status-icon {
+  font-size: var(--font-size-6xl);
+  margin-bottom: var(--spacing-8);
+}
+
+.payment-success .status-icon--success {
+  color: var(--color-success);
+}
+
+.payment-success .status-icon--error {
+  color: var(--color-destructive);
+}
+
+.payment-success .status-title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weight-semibold);
+}
+
+.payment-success .status-message {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-foreground-secondary);
+  margin-bottom: var(--spacing-8);
+}
+
+.payment-success .status-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.payment-success .status-actions button {
+  padding: var(--spacing-4);
+}
+
+@media (max-width: 768px) {
+  .payment-success {
+    padding: var(--spacing-4);
   }
-  
-  .payment-content {
-    max-width: 500px;
+
+  .payment-success .status-actions button {
     width: 100%;
-    text-align: center;
   }
+}
   
-  .loading {
-    p {
-      margin-top: 1rem;
-      color: var(--text-color-secondary);
-    }
-  }
-  
-  .success-content, .error-content {
-    .success-icon, .error-icon {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-    }
-  
-    .success-icon {
-      color: var(--green-500);
-    }
-  
-    .error-icon {
-      color: var(--red-500);
-    }
-  
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-  
-    .success-message, .error-message {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--text-color-secondary);
-      margin-bottom: 2rem;
-    }
-  }
-  
-  .success-actions, .error-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  
-    button {
-      padding: 1rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .payment-success-container {
-      padding: 1rem;
-    }
-  
-    .success-actions, .error-actions {
-      button {
-        width: 100%;
-      }
-    }
-  }
+
+
+

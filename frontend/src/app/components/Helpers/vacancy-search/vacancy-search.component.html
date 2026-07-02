@@ -180,7 +180,7 @@
           <div class="vacancy-company">
             <span class="company-name">{{ vacancy.employer.name }}</span>
             <span class="company-location" *ngIf="vacancy.address?.city">
-              • {{ vacancy.address?.city }}
+              • {{ vacancy.address!.city }}
             </span>
           </div>
 
@@ -279,7 +279,7 @@
 
     <div *ngIf="vacancies.length === 0 && !isLoading && searchPerformed" class="no-results">
       <div class="no-results-content">
-        <i class="pi pi-search" style="font-size: 3rem; color: #6c757d;"></i>
+        <i class="pi pi-search" style="font-size: 3rem; color: var(--color-foreground-tertiary);"></i>
         <h4>{{ 'RESULTS.NO_RESULTS' | translate }}</h4>
         <p>{{ 'RESULTS.NO_RESULTS_HINT' | translate }}</p>
         <button pButton 
@@ -342,7 +342,7 @@
     <!-- Сообщение об отсутствии избранных -->
     <div *ngIf="favoriteVacancies.length === 0" class="no-favorites">
       <div class="no-favorites-content">
-        <i class="pi pi-heart" style="font-size: 3rem; color: #6c757d;"></i>
+        <i class="pi pi-heart" style="font-size: 3rem; color: var(--color-foreground-tertiary);"></i>
         <h4>Нет избранных вакансий</h4>
         <p>Добавьте вакансии в избранное, чтобы работать с ними</p>
       </div>

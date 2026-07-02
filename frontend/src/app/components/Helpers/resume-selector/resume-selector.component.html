@@ -74,7 +74,7 @@
   
           <!-- Сообщение если нет резюме -->
           <div *ngIf="resumes.length === 0" class="no-resumes">
-            <i class="pi pi-inbox" style="font-size: 3rem; color: #6c757d;"></i>
+            <i class="pi pi-inbox" style="font-size: 3rem; color: var(--color-foreground-tertiary);"></i>
             <h4>{{ 'RESUME_SELECTOR.NO_RESUMES' | translate }}</h4>
             <p>{{ 'RESUME_SELECTOR.NO_RESUMES_HINT' | translate }}</p>
             

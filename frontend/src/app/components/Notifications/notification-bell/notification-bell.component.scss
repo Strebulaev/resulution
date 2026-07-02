@@ -1,223 +1,155 @@
 .notification-bell {
-    position: relative;
-    
-    .notification-button {
-      position: relative;
-      
-      ::ng-deep .p-badge {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        min-width: 18px;
-        height: 18px;
-        font-size: 10px;
-      }
-    }
+  position: relative;
+}
+
+.notification-bell .notification-button {
+  position: relative;
+}
+
+.notification-bell ::ng-deep .p-popover {
+  width: 380px;
+  max-width: 90vw;
+}
+
+.notification-bell ::ng-deep .p-popover-content {
+  padding: 0;
+}
+
+.notification-bell .notification-popover-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+}
+
+.notification-bell .notification-popover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.notification-bell .notification-popover-header h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.notification-bell .notification-popover-header .notification-actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.notification-bell .notification-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-bell .empty-notifications {
+  text-align: center;
+  padding: var(--spacing-8);
+  color: var(--color-foreground-secondary);
+}
+
+.notification-bell .empty-notifications i {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-4);
+  display: block;
+}
+
+.notification-bell .notification-item {
+  display: flex;
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border-light);
+  cursor: pointer;
+  transition: background var(--transition-base);
+}
+
+.notification-bell .notification-item:hover {
+  background: var(--color-surface-hover);
+}
+
+.notification-bell .notification-item.unread {
+  background: var(--color-muted);
+  border-left: 3px solid var(--color-primary);
+}
+
+.notification-bell .notification-item.unread:hover {
+  background: var(--color-muted-hover);
+}
+
+.notification-bell .notification-item.important {
+  background: var(--color-destructive-light);
+  border-left: 3px solid var(--color-destructive);
+}
+
+.notification-bell .notification-item .notification-icon {
+  padding-right: var(--spacing-4);
+  display: flex;
+  align-items: flex-start;
+}
+
+.notification-bell .notification-item .notification-icon i {
+  font-size: var(--font-size-lg);
+  color: var(--color-foreground-secondary);
+}
+
+.notification-bell .notification-item .notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-bell .notification-item .notification-title {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-1);
+  color: var(--color-foreground);
+}
+
+.notification-bell .notification-item .notification-message {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-2);
+  line-height: var(--line-height-snug);
+  word-wrap: break-word;
+}
+
+.notification-bell .notification-item .notification-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-foreground-tertiary);
+}
+
+.notification-bell .notification-item .notification-actions {
+  display: flex;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.notification-bell .notification-item:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification-bell .notification-popover-footer {
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .notification-bell ::ng-deep .p-popover {
+    width: 90vw;
+    margin: 0 auto;
   }
-  
-  ::ng-deep .notification-popover {
-    .p-popover {
-      width: 380px;
-      max-width: 90vw;
-      
-      .p-popover-content {
-        padding: 0;
-      }
-    }
-    
-    .notification-popover-content {
-      .notification-popover-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        border-bottom: 1px solid var(--surface-200);
-        
-        h3 {
-          margin: 0;
-          font-size: 1.1rem;
-          font-weight: 600;
-        }
-        
-        .notification-actions {
-          display: flex;
-          gap: 0.5rem;
-        }
-      }
-      
-      .notification-list {
-        max-height: 400px;
-        overflow-y: auto;
-        
-        .empty-notifications {
-          text-align: center;
-          padding: 2rem;
-          color: var(--text-color-secondary);
-          
-          i {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
-          }
-          
-          p {
-            margin: 0;
-          }
-        }
-        
-        .notification-item {
-          display: flex;
-          padding: 1rem;
-          border-bottom: 1px solid var(--surface-100);
-          cursor: pointer;
-          transition: background-color 0.2s;
-          
-          &:hover {
-            background-color: var(--surface-50);
-          }
-          
-          &.unread {
-            background-color: var(--blue-50);
-            border-left: 3px solid var(--primary-color);
-            
-            &:hover {
-              background-color: var(--blue-100);
-            }
-          }
-          
-          &.important {
-            background-color: var(--red-50);
-            border-left: 3px solid var(--red-500);
-            
-            &:hover {
-              background-color: var(--red-100);
-            }
-          }
-          
-          // Типы уведомлений
-          &.notification-system {
-            border-left-color: var(--blue-500);
-          }
-          
-          &.notification-billing {
-            border-left-color: var(--green-500);
-          }
-          
-          &.notification-feature {
-            border-left-color: var(--purple-500);
-          }
-          
-          &.notification-security {
-            border-left-color: var(--orange-500);
-          }
-          
-          &.notification-promotional {
-            border-left-color: var(--pink-500);
-          }
-          
-          .notification-icon {
-            padding-right: 1rem;
-            display: flex;
-            align-items: flex-start;
-            
-            i {
-              font-size: 1.2rem;
-              color: var(--text-color-secondary);
-            }
-          }
-          
-          .notification-content {
-            flex: 1;
-            min-width: 0;
-            
-            .notification-title {
-              font-weight: 600;
-              margin-bottom: 0.25rem;
-              color: var(--text-color);
-            }
-            
-            .notification-message {
-              color: var(--text-color-secondary);
-              font-size: 0.9rem;
-              margin-bottom: 0.5rem;
-              line-height: 1.3;
-              word-wrap: break-word;
-            }
-            
-            .notification-time {
-              font-size: 0.8rem;
-              color: var(--text-color-secondary);
-            }
-          }
-          
-          .notification-actions {
-            display: flex;
-            align-items: flex-start;
-            opacity: 0;
-            transition: opacity 0.2s;
-          }
-          
-          &:hover .notification-actions {
-            opacity: 1;
-          }
-        }
-      }
-      
-      .notification-popover-footer {
-        padding: 1rem;
-        border-top: 1px solid var(--surface-200);
-        text-align: center;
-      }
-    }
+
+  .notification-bell .notification-item {
+    padding: var(--spacing-3);
   }
-  
-  // Стили для диалога всех уведомлений
-  .all-notifications {
-    .notifications-header-actions {
-      margin-bottom: 1rem;
-      text-align: right;
-    }
-    
-    .notifications-list {
-      max-height: 60vh;
-      overflow-y: auto;
-      
-      .notification-item.detailed {
-        .notification-content {
-          .notification-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            
-            .notification-type {
-              font-size: 0.7rem;
-              text-transform: uppercase;
-              background: var(--surface-100);
-              padding: 0.2rem 0.5rem;
-              border-radius: 12px;
-              color: var(--text-color-secondary);
-            }
-          }
-        }
-      }
-    }
+
+  .notification-bell .notification-item .notification-actions {
+    opacity: 1;
   }
-  
-  // Адаптивность
-  @media (max-width: 768px) {
-    ::ng-deep .notification-popover {
-      .p-popover {
-        width: 90vw;
-        margin: 0 auto;
-      }
-    }
-    
-    .notification-item {
-      padding: 0.75rem;
-      
-      .notification-actions {
-        opacity: 1 !important;
-      }
-    }
-  }
+}
+
+
+
+

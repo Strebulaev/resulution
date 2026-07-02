@@ -709,7 +709,19 @@
       "EDIT": "Edit",
       "CONFIGURE": "Configure", 
       "USE": "Use",
-      "CONNECT": "Connect"
+      "CONNECT": "Connect",
+      "ADD_PROVIDER": "Add Provider"
+    },
+    "ADD_PROVIDER": {
+      "TITLE": "Add Custom AI Provider",
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "e.g., My AI Provider",
+      "BASE_URL": "Base URL",
+      "BASE_URL_PLACEHOLDER": "https://api.example.com/v1",
+      "API_KEY": "API Key",
+      "API_KEY_PLACEHOLDER": "Enter your API key",
+      "MODELS": "Models",
+      "MODELS_PLACEHOLDER": "model-1, model-2, model-3 (comma-separated)"
     },
     "HELP": {
       "TITLE": "Connection troubleshooting:",

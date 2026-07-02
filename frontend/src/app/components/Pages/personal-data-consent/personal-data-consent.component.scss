@@ -1,150 +1,147 @@
 .consent-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-index-modal);
+  padding: var(--spacing-5);
+}
+
+.consent-modal .content {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.consent-modal .header {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-5) var(--spacing-8);
+}
+
+.consent-modal .header h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+}
+
+.consent-modal .body {
+  padding: var(--spacing-8);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.consent-modal .text {
+  margin-bottom: var(--spacing-8);
+}
+
+.consent-modal .text h3 {
+  margin: var(--spacing-5) 0 var(--spacing-2) 0;
+  font-size: var(--font-size-lg);
+}
+
+.consent-modal .text p {
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-foreground);
+}
+
+.consent-modal .text ul {
+  margin: var(--spacing-2) 0;
+  padding-left: var(--spacing-5);
+}
+
+.consent-modal .text li {
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-1);
+}
+
+.consent-modal .actions {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-5);
+}
+
+.consent-modal .checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-5);
+}
+
+.consent-modal .checkbox input[type="checkbox"] {
+  margin-right: var(--spacing-2);
+  margin-top: 3px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.consent-modal .checkbox label {
+  line-height: var(--line-height-normal);
+  color: var(--color-foreground);
+  cursor: pointer;
+}
+
+.consent-modal .buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.consent-modal .button {
+  padding: var(--spacing-3) var(--spacing-6);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.consent-modal .button--primary {
+  background: var(--color-info);
+  color: var(--color-on-primary);
+}
+
+.consent-modal .button--primary:hover:not(:disabled) {
+  background: var(--color-info-hover);
+}
+
+.consent-modal .button--primary:disabled {
+  background: var(--color-foreground-tertiary);
+  cursor: not-allowed;
+}
+
+.consent-modal .button--secondary {
+  background: var(--color-destructive);
+  color: var(--color-on-primary);
+}
+
+.consent-modal .button--secondary:hover {
+  background: var(--color-destructive-hover);
+}
+
+@media (max-width: 768px) {
+  .consent-modal {
+    padding: var(--spacing-2);
+  }
+
+  .consent-modal .body {
+    padding: var(--spacing-5);
+  }
+
+  .consent-modal .buttons {
+    flex-direction: column;
+  }
+
+  .consent-modal .button {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    padding: 20px;
-  
-    .modal-content {
-      background: white;
-      border-radius: 12px;
-      max-width: 700px;
-      width: 100%;
-      max-height: 90vh;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  
-      .modal-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 20px 30px;
-        
-        h2 {
-          margin: 0;
-          font-size: 1.5rem;
-        }
-      }
-  
-      .modal-body {
-        padding: 30px;
-        max-height: 70vh;
-        overflow-y: auto;
-  
-        .consent-text {
-          margin-bottom: 30px;
-          
-          h3 {
-            color: #2c3e50;
-            margin: 20px 0 10px 0;
-            font-size: 1.1rem;
-          }
-  
-          p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #34495e;
-          }
-  
-          ul {
-            margin: 10px 0;
-            padding-left: 20px;
-            
-            li {
-              line-height: 1.6;
-              margin-bottom: 5px;
-              color: #34495e;
-            }
-          }
-        }
-  
-        .consent-actions {
-          border-top: 1px solid #ecf0f1;
-          padding-top: 20px;
-  
-          .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-  
-            input[type="checkbox"] {
-              margin-right: 10px;
-              margin-top: 3px;
-              transform: scale(1.2);
-            }
-  
-            label {
-              line-height: 1.4;
-              color: #2c3e50;
-              cursor: pointer;
-            }
-          }
-  
-          .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-  
-            button {
-              padding: 12px 24px;
-              border: none;
-              border-radius: 6px;
-              font-size: 1rem;
-              cursor: pointer;
-              transition: all 0.3s ease;
-  
-              &.btn-primary {
-                background: #3498db;
-                color: white;
-  
-                &:hover:not(:disabled) {
-                  background: #2980b9;
-                }
-  
-                &:disabled {
-                  background: #bdc3c7;
-                  cursor: not-allowed;
-                }
-              }
-  
-              &.btn-secondary {
-                background: #e74c3c;
-                color: white;
-  
-                &:hover {
-                  background: #c0392b;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
   }
-  
-  @media (max-width: 768px) {
-    .consent-modal {
-      padding: 10px;
-  
-      .modal-content {
-        .modal-body {
-          padding: 20px;
-        }
-  
-        .consent-actions {
-          .buttons {
-            flex-direction: column;
-            
-            button {
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
+}
+
+
+
+

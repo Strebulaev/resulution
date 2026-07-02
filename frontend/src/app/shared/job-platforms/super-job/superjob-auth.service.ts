@@ -255,16 +255,14 @@ export class SuperJobAuthService {
   
       console.log('Making token exchange request to server endpoint');
       
-      const response = await fetch('/api/superjob/token', {
+      const response = await fetch('/api/superjob/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           code: code,
-          redirect_uri: this.getRedirectUri(),
-          client_id: this.clientId,
-          client_secret: this.clientSecret
+          userId: 'dummy' // auth endpoint expects userId but we don't use it
         })
       });
   
@@ -302,7 +300,7 @@ export class SuperJobAuthService {
     }
   
     try {
-      const response = await fetch('/api/superjob/refresh', {
+      const response = await fetch('/api/superjob/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

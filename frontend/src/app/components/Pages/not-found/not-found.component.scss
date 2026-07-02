@@ -1,180 +1,61 @@
 .not-found-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.error-content {
-  text-align: center;
-  color: white;
-  max-width: 600px;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.error-content h1 {
-  font-size: 8rem;
-  font-weight: 900;
-  margin: 0;
-  background: linear-gradient(45deg, #fff, #e0e7ff);
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  line-height: 1;
-}
-
-.error-content h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 1rem 0;
-  color: #e0e7ff;
-}
-
-.error-content p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  line-height: 1.6;
-}
-
-.error-content button {
-  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
-  }
-  
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-// Консистентные стили для всего компонента
-:host {
-  display: block;
-  min-height: 100vh;
-}
-
-// Стили для состояний загрузки
-.loading-overlay {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  
-  p {
-    margin-top: 1rem;
-    color: #6c757d;
-    font-size: 1.1rem;
-  }
-}
-
-// Стили для ошибок
-.error-message {
-  background: #fee2e2;
-  color: #dc2626;
-  padding: 1rem;
-  border-radius: 6px;
-  margin: 1rem 0;
-  border: 1px solid #fecaca;
+  min-height: 100vh;
+  padding: var(--spacing-8);
+  background: var(--color-background);
   text-align: center;
 }
 
-// Стили для успешных операций
-.success-message {
-  background: #dcfce7;
-  color: #166534;
-  padding: 1rem;
-  border-radius: 6px;
-  margin: 1rem 0;
-  border: 1px solid #bbf7d0;
-  text-align: center;
+.not-found-container .error-content {
+  max-width: 500px;
 }
 
-// Стили для кнопок в разных состояниях
-.p-button {
-  transition: all 0.3s ease !important;
-  
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  &:active {
-    transform: translateY(0);
-  }
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-  }
+.not-found-container .error-content h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: 1;
 }
 
-/* Анимации */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+.not-found-container .error-content h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-foreground);
 }
 
-.error-content h1 {
-  animation: float 3s ease-in-out infinite;
+.not-found-container .error-content p {
+  font-size: var(--font-size-lg);
+  color: var(--color-foreground-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
 }
 
-/* Адаптивность */
+.not-found-container .error-content .p-button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
 @media (max-width: 768px) {
-  .error-content {
-    padding: 2rem;
-    margin: 1rem;
-  }
-  
-  .error-content h1 {
-    font-size: 6rem;
-  }
-  
-  .error-content h2 {
-    font-size: 1.5rem;
-  }
-  
-  .error-content p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .error-content h1 {
-    font-size: 4rem;
-  }
-  
-  .error-content h2 {
-    font-size: 1.25rem;
-  }
-  
-  .error-content button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-  }
-  
   .not-found-container {
-    padding: 1rem;
+    padding: var(--spacing-4);
+  }
+
+  .not-found-container .error-content h1 {
+    font-size: var(--font-size-5xl);
+  }
+
+  .not-found-container .error-content h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .not-found-container .error-content .p-button-primary {
+    width: 100%;
+    justify-content: center;
   }
 }

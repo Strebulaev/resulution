@@ -1,446 +1,1110 @@
 .resume-management-container {
-  padding: 2rem;
+  padding: var(--spacing-8) var(--spacing-6);
   max-width: 1200px;
   margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: calc(100vh - 64px);
+  background: var(--color-background);
 }
 
-.header {
+.resume-management-container .header {
   text-align: center;
-  margin-bottom: 2rem;
-  
-  h2 {
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-    font-size: 2.2rem;
-    font-weight: 600;
-  }
-  
-  p {
-    color: var(--text-color-secondary);
-    font-size: 1.1rem;
-    margin: 0;
-    line-height: 1.6;
-  }
+  margin-bottom: var(--spacing-8);
 }
 
-.tabs {
+.resume-management-container .header h2 {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .header p {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .tabs {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--surface-border);
-  
-  .tab {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: transparent;
-    border: none;
-    border-bottom: 3px solid transparent;
-    color: var(--text-color-secondary);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    
-    &:hover {
-      color: var(--primary-color);
-      background: var(--surface-ground);
-    }
-    
-    &.active {
-      color: var(--primary-color);
-      border-bottom-color: var(--primary-color);
-      background: var(--surface-ground);
-    }
-    
-    .badge {
-      background: var(--primary-color);
-      color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-  }
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.loading-section {
+.resume-management-container .tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-foreground-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .tab:hover {
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab .badge {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .loading-section {
   text-align: center;
-  padding: 3rem;
-  
-  p {
-    margin-top: 1rem;
-    color: var(--text-color-secondary);
-    font-size: 1.1rem;
-  }
+  padding: var(--spacing-12);
 }
 
-.empty-state {
+.resume-management-container .loading-section p {
+  margin-top: var(--spacing-4);
+  color: var(--color-foreground-secondary);
+}
+
+.resume-management-container .empty-state {
   text-align: center;
-  padding: 3rem;
-  background: var(--surface-card);
-  border-radius: 12px;
-  border: 1px solid var(--surface-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  
-  i {
-    margin-bottom: 1rem;
-    display: block;
-  }
-  
-  h4 {
-    margin: 0 0 0.5rem 0;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-  
-  p {
-    color: var(--text-color-secondary);
-    margin: 0 0 1.5rem 0;
-    line-height: 1.6;
-  }
-  
-  .connection-status {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #e8f5e8;
-    border-radius: 6px;
-    border: 1px solid #d4edda;
-    
-    p {
-      margin: 0 0 0.5rem 0;
-      color: #155724;
-      font-weight: 500;
-    }
-    
-    small {
-      color: #0f5132;
-      font-size: 0.875rem;
-    }
-  }
+  padding: var(--spacing-12);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
-.resumes-grid {
+.resume-management-container .empty-state i {
+  margin-bottom: var(--spacing-4);
+  display: block;
+  font-size: var(--font-size-5xl);
+  color: var(--color-foreground-tertiary);
+}
+
+.resume-management-container .empty-state h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .empty-state p {
+  color: var(--color-foreground-secondary);
+  margin: 0 0 var(--spacing-6) 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .connection-status {
+  margin: var(--spacing-4) 0;
+  padding: var(--spacing-4);
+  background: var(--color-success-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-success);
+}
+
+.resume-management-container .connection-status p {
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--color-success-hover);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .connection-status small {
+  color: var(--color-success-hover);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .resumes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 1.5rem;
+  gap: var(--spacing-6);
 }
 
-.resume-card {
-  ::ng-deep .p-card {
-    height: 100%;
-    transition: all 0.3s ease;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--surface-border);
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-    
-    .p-card-body {
-      padding: 1.5rem;
-    }
-    
-    .p-card-content {
-      padding: 0;
-    }
-  }
+.resume-management-container .resume-card ::ng-deep .p-card {
+  height: 100%;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
 }
 
-.resume-header {
+.resume-management-container .resume-card ::ng-deep .p-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card-body {
+  padding: var(--spacing-6);
+}
+
+.resume-management-container .resume-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
-  gap: 1rem;
-  
-  .resume-title {
-    margin: 0;
-    color: var(--text-color);
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1.4;
-    flex: 1;
-  }
-  
-  ::ng-deep .p-tag {
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
+  margin-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
 }
 
-.resume-meta {
+.resume-management-container .resume-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+.resume-management-container .resume-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  
-  .meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-color-secondary);
-    font-size: 0.875rem;
-    
-    i {
-      font-size: 0.75rem;
-      color: var(--text-color-secondary);
-    }
-  }
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
 }
 
-.resume-skills {
-  margin-bottom: 1.5rem;
-  
-  label {
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-    display: block;
-    font-size: 0.9rem;
-  }
-  
-  .skills-text {
-    margin: 0;
-    color: var(--text-color);
-    line-height: 1.5;
-    font-size: 0.9rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-}
-
-.resume-actions {
+.resume-management-container .meta-item {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .meta-item i {
+  color: var(--color-foreground-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+.resume-management-container .resume-actions {
+  display: flex;
+  gap: var(--spacing-2);
   flex-wrap: wrap;
   align-items: center;
-  
-  // Фиксированная высота для всех кнопок
-  button {
-    height: 36px !important;
-    min-height: 36px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    
-    // Убедитесь, что текст не переносится
-    white-space: nowrap;
-    
-    // Для кнопок с иконками
-    ::ng-deep .p-button-icon {
-      margin: 0 !important;
-    }
-    
-    // Для кнопок с текстом
-    ::ng-deep .p-button-label {
-      line-height: 1 !important;
-    }
-  }
+  margin-top: auto;
 }
 
-// Убедитесь, что карточки имеют одинаковую высоту
-.resume-card {
+.resume-management-container .resume-actions button {
+  height: 36px;
+  min-height: 36px;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  
-  ::ng-deep .p-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    
-    .p-card-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .p-card-content {
-      flex: 1;
-    }
-    
-    .resume-actions {
-      margin-top: auto;
-      padding-top: 1rem;
-    }
-  }
-}
-
-// Специфичные стили для кнопок HH.ru
-.resumes-section.hh-section {
-  .resume-actions {
-    button {
-      height: 36px;
-      min-height: 36px;
-      
-      // Убедитесь, что кнопки имеют одинаковую ширину
-      min-width: 120px;
-      justify-content: center;
-    }
-  }
-}
-
-.resume-details {
-  .detail-section {
-    margin-bottom: 1.5rem;
-    
-    h5 {
-      margin: 0 0 0.5rem 0;
-      color: var(--text-color);
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    
-    p {
-      margin: 0;
-      color: var(--text-color);
-      line-height: 1.5;
-    }
-    
-    .skills-text {
-      line-height: 1.6;
-      white-space: pre-wrap;
-      background: var(--surface-ground);
-      padding: 1rem;
-      border-radius: 6px;
-      border: 1px solid var(--surface-border);
-    }
-  }
-  
-  .experience-item {
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    background: var(--surface-ground);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    
-    strong {
-      color: var(--text-color);
-    }
-  }
-  
-  .detail-actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-end;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--surface-border);
-  }
-}
-
-// Консистентные стили для всего компонента
-:host {
-  display: block;
-  min-height: 100vh;
-  background: #f8f9fa;
-}
-
-// Стили для состояний загрузки
-.loading-overlay {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  
-  p {
-    margin-top: 1rem;
-    color: #6c757d;
-  }
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
 }
 
-// Стили для ошибок
-.error-message {
-  background: #fee2e2;
-  color: #dc2626;
-  padding: 1rem;
-  border-radius: 6px;
-  margin: 1rem 0;
-  border: 1px solid #fecaca;
-  text-align: center;
+.resume-management-container .resume-details .detail-section {
+  margin-bottom: var(--spacing-6);
 }
 
-// Стили для успешных операций
-.success-message {
-  background: #dcfce7;
-  color: #166534;
-  padding: 1rem;
-  border-radius: 6px;
-  margin: 1rem 0;
-  border: 1px solid #bbf7d0;
-  text-align: center;
+.resume-management-container .resume-details .detail-section h5 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
 }
 
-// Улучшенные стили для диалогов
-::ng-deep .p-dialog {
-  .p-dialog-header {
-    background: #f8f9fa !important;
-    border-bottom: 1px solid #e9ecef !important;
-    font-weight: 600 !important;
-  }
-
-  .p-dialog-content {
-    padding: 1.5rem !important;
-  }
+.resume-management-container .resume-details .detail-section p {
+  margin: 0;
+  line-height: var(--line-height-normal);
 }
 
-// Адаптивность
+.resume-management-container .resume-details .skills-text {
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  background: var(--color-surface);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .detail-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border);
+}
+
 @media (max-width: 768px) {
   .resume-management-container {
-    padding: 1rem;
+    padding: var(--spacing-4);
   }
   
-  .tabs {
+  .resume-management-container .tabs {
     flex-direction: column;
-    
-    .tab {
-      justify-content: center;
-    }
   }
   
-  .resumes-grid {
+  .resume-management-container .tab {
+    justify-content: center;
+  }
+  
+  .resume-management-container .resumes-grid {
     grid-template-columns: 1fr;
   }
   
-  .resume-header {
+  .resume-management-container .resume-header {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--spacing-2);
   }
   
-  .resume-actions {
+  .resume-management-container .resume-actions {
     flex-direction: column;
-    
-    button {
-      width: 100%;
-    }
   }
-  
-  .detail-actions {
+
+  .resume-management-container .resume-actions button {
+    width: 100%;
+  }
+
+  .resume-management-container .detail-actions {
     flex-direction: column;
   }
 }
 
 @media (max-width: 480px) {
-  .header {
-    h2 {
-      font-size: 1.8rem;
-    }
-    
-    p {
-      font-size: 1rem;
-    }
+  .resume-management-container .header h2 {
+    font-size: var(--font-size-3xl);
   }
-  
-  .resume-card {
-    ::ng-deep .p-card-body {
-      padding: 1rem;
-    }
+
+  .resume-management-container .header p {
+    font-size: var(--font-size-base);
+  }
+
+  .resume-management-container .resume-card ::ng-deep .p-card-body {
+    padding: var(--spacing-4);
   }
 }
+
+.resume-management-container .header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.resume-management-container .header h2 {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .header p {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .tabs {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resume-management-container .tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-foreground-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .tab:hover {
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab .badge {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .loading-section {
+  text-align: center;
+  padding: var(--spacing-12);
+}
+
+.resume-management-container .loading-section p {
+  margin-top: var(--spacing-4);
+  color: var(--color-foreground-secondary);
+}
+
+.resume-management-container .empty-state {
+  text-align: center;
+  padding: var(--spacing-12);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.resume-management-container .empty-state i {
+  margin-bottom: var(--spacing-4);
+  display: block;
+  font-size: var(--font-size-5xl);
+  color: var(--color-foreground-tertiary);
+}
+
+.resume-management-container .empty-state h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .empty-state p {
+  color: var(--color-foreground-secondary);
+  margin: 0 0 var(--spacing-6) 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .connection-status {
+  margin: var(--spacing-4) 0;
+  padding: var(--spacing-4);
+  background: var(--color-success-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-success);
+}
+
+.resume-management-container .connection-status p {
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--color-success-hover);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .connection-status small {
+  color: var(--color-success-hover);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .resumes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card {
+  height: 100%;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card-body {
+  padding: var(--spacing-6);
+}
+
+.resume-management-container .resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
+}
+
+.resume-management-container .resume-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+.resume-management-container .resume-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+.resume-management-container .meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .meta-item i {
+  color: var(--color-foreground-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+.resume-management-container .resume-actions {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: auto;
+}
+
+.resume-management-container .resume-actions button {
+  height: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
+}
+
+.resume-management-container .resume-details .detail-section {
+  margin-bottom: var(--spacing-6);
+}
+
+.resume-management-container .resume-details .detail-section h5 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .resume-details .detail-section p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+.resume-management-container .resume-details .skills-text {
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  background: var(--color-surface);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .detail-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .resume-management-container {
+    padding: var(--spacing-4);
+  }
+  
+  .resume-management-container .tabs {
+    flex-direction: column;
+  }
+  
+  .resume-management-container .tab {
+    justify-content: center;
+  }
+  
+  .resume-management-container .resumes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .resume-management-container .resume-header {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  .resume-management-container .resume-actions {
+    flex-direction: column;
+  }
+
+  .resume-management-container .resume-actions button {
+    width: 100%;
+  }
+
+  .resume-management-container .detail-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-management-container .header h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .resume-management-container .header p {
+    font-size: var(--font-size-base);
+  }
+
+  .resume-management-container .resume-card ::ng-deep .p-card-body {
+    padding: var(--spacing-4);
+  }
+}
+
+.resume-management-container .header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.resume-management-container .header h2 {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .header p {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .tabs {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resume-management-container .tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-foreground-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .tab:hover {
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab .badge {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .loading-section {
+  text-align: center;
+  padding: var(--spacing-12);
+}
+
+.resume-management-container .loading-section p {
+  margin-top: var(--spacing-4);
+  color: var(--color-foreground-secondary);
+}
+
+.resume-management-container .empty-state {
+  text-align: center;
+  padding: var(--spacing-12);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.resume-management-container .empty-state i {
+  margin-bottom: var(--spacing-4);
+  display: block;
+  font-size: var(--font-size-5xl);
+  color: var(--color-foreground-tertiary);
+}
+
+.resume-management-container .empty-state h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .empty-state p {
+  color: var(--color-foreground-secondary);
+  margin: 0 0 var(--spacing-6) 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .connection-status {
+  margin: var(--spacing-4) 0;
+  padding: var(--spacing-4);
+  background: var(--color-success-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-success);
+}
+
+.resume-management-container .connection-status p {
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--color-success-hover);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .connection-status small {
+  color: var(--color-success-hover);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .resumes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card {
+  height: 100%;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card-body {
+  padding: var(--spacing-6);
+}
+
+.resume-management-container .resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
+}
+
+.resume-management-container .resume-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+.resume-management-container .resume-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+.resume-management-container .meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .meta-item i {
+  color: var(--color-foreground-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+.resume-management-container .resume-actions {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: auto;
+}
+
+.resume-management-container .resume-actions button {
+  height: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
+}
+
+.resume-management-container .resume-details .detail-section {
+  margin-bottom: var(--spacing-6);
+}
+
+.resume-management-container .resume-details .detail-section h5 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .resume-details .detail-section p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+.resume-management-container .resume-details .skills-text {
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  background: var(--color-surface);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .detail-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .resume-management-container {
+    padding: var(--spacing-4);
+  }
+  
+  .resume-management-container .tabs {
+    flex-direction: column;
+  }
+  
+  .resume-management-container .tab {
+    justify-content: center;
+  }
+  
+  .resume-management-container .resumes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .resume-management-container .resume-header {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  .resume-management-container .resume-actions {
+    flex-direction: column;
+  }
+
+  .resume-management-container .resume-actions button {
+    width: 100%;
+  }
+
+  .resume-management-container .detail-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-management-container .header h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .resume-management-container .header p {
+    font-size: var(--font-size-base);
+  }
+
+  .resume-management-container .resume-card ::ng-deep .p-card-body {
+    padding: var(--spacing-4);
+  }
+}
+
+.resume-management-container .header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.resume-management-container .header h2 {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .header p {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .tabs {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resume-management-container .tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-foreground-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .tab:hover {
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.resume-management-container .tab .badge {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .loading-section {
+  text-align: center;
+  padding: var(--spacing-12);
+}
+
+.resume-management-container .loading-section p {
+  margin-top: var(--spacing-4);
+  color: var(--color-foreground-secondary);
+}
+
+.resume-management-container .empty-state {
+  text-align: center;
+  padding: var(--spacing-12);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.resume-management-container .empty-state i {
+  margin-bottom: var(--spacing-4);
+  display: block;
+  font-size: var(--font-size-5xl);
+  color: var(--color-foreground-tertiary);
+}
+
+.resume-management-container .empty-state h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .empty-state p {
+  color: var(--color-foreground-secondary);
+  margin: 0 0 var(--spacing-6) 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.resume-management-container .connection-status {
+  margin: var(--spacing-4) 0;
+  padding: var(--spacing-4);
+  background: var(--color-success-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-success);
+}
+
+.resume-management-container .connection-status p {
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--color-success-hover);
+  font-weight: var(--font-weight-medium);
+}
+
+.resume-management-container .connection-status small {
+  color: var(--color-success-hover);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .resumes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card {
+  height: 100%;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-management-container .resume-card ::ng-deep .p-card-body {
+  padding: var(--spacing-6);
+}
+
+.resume-management-container .resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
+}
+
+.resume-management-container .resume-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+.resume-management-container .resume-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+.resume-management-container .meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.resume-management-container .meta-item i {
+  color: var(--color-foreground-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+.resume-management-container .resume-actions {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: auto;
+}
+
+.resume-management-container .resume-actions button {
+  height: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
+}
+
+.resume-management-container .resume-details .detail-section {
+  margin-bottom: var(--spacing-6);
+}
+
+.resume-management-container .resume-details .detail-section h5 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.resume-management-container .resume-details .detail-section p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+.resume-management-container .resume-details .skills-text {
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  background: var(--color-surface);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.resume-management-container .detail-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .resume-management-container {
+    padding: var(--spacing-4);
+  }
+  
+  .resume-management-container .tabs {
+    flex-direction: column;
+  }
+  
+  .resume-management-container .tab {
+    justify-content: center;
+  }
+  
+  .resume-management-container .resumes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .resume-management-container .resume-header {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  .resume-management-container .resume-actions {
+    flex-direction: column;
+  }
+
+  .resume-management-container .resume-actions button {
+    width: 100%;
+  }
+
+  .resume-management-container .detail-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-management-container .header h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .resume-management-container .header p {
+    font-size: var(--font-size-base);
+  }
+
+  .resume-management-container .resume-card ::ng-deep .p-card-body {
+    padding: var(--spacing-4);
+  }
+}
+
+
+

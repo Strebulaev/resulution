@@ -1,204 +1,201 @@
 .subscription-management {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-6);
+  min-height: calc(100vh - 64px);
+  background: var(--color-background);
+}
+
+.subscription-management .header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.subscription-management .header h2 {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.subscription-management .header p {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.subscription-management .loading {
+  text-align: center;
+  padding: var(--spacing-12);
+}
+
+.subscription-management .loading p {
+  margin-top: var(--spacing-4);
+  color: var(--color-foreground-secondary);
+}
+
+.subscription-management .content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.subscription-management .plan-card,
+.subscription-management .usage-card,
+.subscription-management .features-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.subscription-management .plan-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-6);
+}
+
+.subscription-management .plan-details {
+  flex: 1;
+}
+
+.subscription-management .plan-details h3 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.subscription-management .plan-description {
+  color: var(--color-foreground-secondary);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.subscription-management .plan-period {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.subscription-management .plan-period span {
+  color: var(--color-foreground);
+}
+
+.subscription-management .days-remaining {
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+
+.subscription-management .trial-info {
+  color: var(--color-warning);
+  font-weight: var(--font-weight-semibold);
+}
+
+.subscription-management .plan-actions {
+  flex-shrink: 0;
+}
+
+.subscription-management .usage-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.subscription-management .usage-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.subscription-management .usage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subscription-management .usage-feature {
+  font-weight: var(--font-weight-semibold);
+}
+
+.subscription-management .usage-count {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.subscription-management .usage-progress.usage-progress--success {
+  color: var(--color-success);
+}
+
+.subscription-management .usage-progress.usage-progress--warn {
+  color: var(--color-warning);
+}
+
+.subscription-management .usage-progress.usage-progress--danger {
+  color: var(--color-destructive);
+}
+
+.subscription-management .usage-limit {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.subscription-management .usage-limit i {
+  font-size: var(--font-size-xl);
+}
+
+.subscription-management .usage-remaining {
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-sm);
+  text-align: right;
+}
+
+.subscription-management .features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.subscription-management .feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.subscription-management .feature-item i {
+  color: var(--color-success);
+  margin-top: var(--spacing-1);
+  flex-shrink: 0;
+}
+
+.subscription-management .feature-item span {
+  line-height: var(--line-height-snug);
+}
+
+@media (max-width: 768px) {
+  .subscription-management {
+    padding: var(--spacing-4);
   }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 3rem;
-  
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-  
-    p {
-      color: var(--text-color-secondary);
-      font-size: 1.1rem;
-    }
-  }
-  
-  .loading {
-    text-align: center;
-    padding: 3rem;
-  
-    p {
-      margin-top: 1rem;
-      color: var(--text-color-secondary);
-    }
-  }
-  
-  .content {
-    display: flex;
+
+  .subscription-management .plan-info {
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--spacing-4);
   }
-  
-  .plan-card {
-    .plan-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 2rem;
-  
-      .plan-details {
-        flex: 1;
-  
-        h3 {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-          color: var(--text-color);
-        }
-  
-        .plan-description {
-          color: var(--text-color-secondary);
-          margin-bottom: 1rem;
-        }
-  
-        .plan-period {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-  
-          span {
-            color: var(--text-color);
-          }
-  
-          .days-remaining {
-            color: var(--green-500);
-            font-weight: 600;
-          }
-  
-          .trial-info {
-            color: var(--orange-500);
-            font-weight: 600;
-          }
-        }
-      }
-  
-      .plan-actions {
-        flex-shrink: 0;
-      }
-    }
+
+  .subscription-management .plan-actions {
+    width: 100%;
   }
-  
-  .usage-card {
-    .usage-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-  
-      .usage-item {
-        .usage-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 0.5rem;
-  
-          .usage-feature {
-            font-weight: 600;
-            color: var(--text-color);
-          }
-  
-          .usage-count {
-            color: var(--text-color-secondary);
-            font-size: 0.9rem;
-          }
-        }
-  
-        .usage-progress {
-          margin-bottom: 0.5rem;
-  
-          &.success {
-            ::ng-deep .p-progressbar-value {
-              background: var(--green-500);
-            }
-          }
-  
-          &.warn {
-            ::ng-deep .p-progressbar-value {
-              background: var(--orange-500);
-            }
-          }
-  
-          &.danger {
-            ::ng-deep .p-progressbar-value {
-              background: var(--red-500);
-            }
-          }
-        }
-  
-        .usage-limit {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: var(--green-500);
-          font-weight: 600;
-  
-          i {
-            font-size: 1.2rem;
-          }
-        }
-  
-        .usage-remaining {
-          color: var(--text-color-secondary);
-          font-size: 0.9rem;
-          text-align: right;
-        }
-      }
-    }
+
+  .subscription-management .plan-actions button {
+    width: 100%;
   }
-  
-  .features-card {
-    .features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-  
-      .feature-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-  
-        i {
-          color: var(--green-500);
-          margin-top: 0.2rem;
-          flex-shrink: 0;
-        }
-  
-        span {
-          color: var(--text-color);
-          line-height: 1.4;
-        }
-      }
-    }
+
+  .subscription-management .features-list {
+    grid-template-columns: 1fr;
   }
-  
-  // Адаптивность
-  @media (max-width: 768px) {
-    .subscription-management {
-      padding: 1rem;
-    }
-  
-    .plan-card .plan-info {
-      flex-direction: column;
-      gap: 1rem;
-  
-      .plan-actions {
-        width: 100%;
-        
-        button {
-          width: 100%;
-        }
-      }
-    }
-  
-    .features-card .features-list {
-      grid-template-columns: 1fr;
-    }
-  }
+}
+
+
+
+

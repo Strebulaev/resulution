@@ -709,7 +709,19 @@
       "EDIT": "Изменить",
       "CONFIGURE": "Настроить",
       "USE": "Использовать", 
-      "CONNECT": "Подключить"
+      "CONNECT": "Подключить",
+      "ADD_PROVIDER": "Добавить провайдера"
+    },
+    "ADD_PROVIDER": {
+      "TITLE": "Добавить кастомный AI провайдер",
+      "NAME": "Название",
+      "NAME_PLACEHOLDER": "Например: My AI Provider",
+      "BASE_URL": "Base URL",
+      "BASE_URL_PLACEHOLDER": "https://api.example.com/v1",
+      "API_KEY": "API Key",
+      "API_KEY_PLACEHOLDER": "Введите ваш API ключ",
+      "MODELS": "Модели",
+      "MODELS_PLACEHOLDER": "model-1, model-2, model-3 (через запятую)"
     },
     "HELP": {
       "TITLE": "Решение проблем с подключением:",

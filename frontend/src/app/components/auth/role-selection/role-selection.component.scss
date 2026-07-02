@@ -1,134 +1,127 @@
-.role-selection-dialog {
-  .p-dialog-content {
-    padding: 2rem;
-  }
-
-  .p-dialog-header {
-    text-align: center;
-    padding-bottom: 1rem;
-  }
-}
-
-.role-selection-container {
+.role-selection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: var(--spacing-8);
   max-width: 800px;
   margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-6);
+  min-height: calc(100vh - 64px);
+  justify-content: center;
+  background: var(--color-background);
 }
 
-.role-selection-description {
+.role-selection .description {
   text-align: center;
-  color: #666;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  color: var(--color-foreground-secondary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
 }
 
-.role-cards {
+.role-selection .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: var(--spacing-8);
   width: 100%;
 }
 
-.role-card {
+.role-selection .card {
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
   border: 2px solid transparent;
   height: 100%;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    border-color: #007bff;
-  }
-
-  .p-card-header {
-    text-align: center;
-    padding: 2rem 1rem 1rem;
-  }
-
-  .p-card-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
-  .p-card-content {
-    padding: 1rem;
-  }
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-8);
 }
 
-.role-icon {
+.role-selection .card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.role-selection .icon {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  font-size: 2rem;
-
-  &.applicant-icon {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-  }
-
-  &.employer-icon {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
-  }
+  margin: 0 auto var(--spacing-4);
+  font-size: var(--font-size-4xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base);
 }
 
-.role-features {
+.role-selection .icon--applicant {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-on-primary);
+}
+
+.role-selection .icon--employer {
+  background: linear-gradient(135deg, var(--color-info) 0%, var(--color-secondary) 100%);
+  color: var(--color-on-primary);
+}
+
+.role-selection .card:hover .icon {
+  transform: scale(1.1);
+}
+
+.role-selection .title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-4);
+  text-align: center;
+}
+
+.role-selection .features {
   list-style: none;
   padding: 0;
   margin: 0;
-
-  li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f0f0f0;
-    position: relative;
-    padding-left: 1.5rem;
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    &:before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #28a745;
-      font-weight: bold;
-    }
-  }
 }
 
-.loading-indicator {
+.role-selection .features li {
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  padding-left: var(--spacing-6);
+}
+
+.role-selection .features li:last-child {
+  border-bottom: none;
+}
+
+.role-selection .features li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: bold;
+}
+
+.role-selection .loading {
   text-align: center;
-  color: #666;
-
-  p {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-  }
+  color: var(--color-foreground-secondary);
 }
 
-// Адаптивность
+.role-selection .loading p {
+  margin-top: var(--spacing-4);
+  font-size: var(--font-size-lg);
+}
+
 @media (max-width: 768px) {
-  .role-cards {
+  .role-selection .cards {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--spacing-6);
   }
 
-  .role-selection-container {
-    gap: 1.5rem;
+  .role-selection {
+    gap: var(--spacing-6);
   }
 
-  .role-selection-description {
-    font-size: 1rem;
+  .role-selection .description {
+    font-size: var(--font-size-base);
   }
 }

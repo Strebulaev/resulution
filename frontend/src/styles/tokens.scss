@@ -1,0 +1,214 @@
+:root {
+  color-scheme: light;
+
+  --color-primary: #1E3A5F;
+  --color-primary-hover: #15294A;
+  --color-primary-light: #3B5A85;
+  --color-on-primary: #FFFFFF;
+
+  --color-secondary: #2563EB;
+  --color-secondary-hover: #1D4ED8;
+  --color-secondary-light: #3B82F6;
+
+  --color-accent: #16A34A;
+  --color-accent-hover: #15803D;
+  --color-accent-light: #22C55E;
+
+  --color-destructive: #DC2626;
+  --color-destructive-hover: #B91C1C;
+  --color-destructive-light: #EF4444;
+
+  --color-warning: #F59E0B;
+  --color-warning-hover: #D97706;
+  --color-warning-light: #FBBF24;
+
+  --color-info: #3B82F6;
+  --color-info-hover: #2563EB;
+  --color-info-light: #60A5FA;
+
+  --color-success: #10B981;
+  --color-success-hover: #059669;
+  --color-success-light: #34D399;
+
+  --color-brand-hh: #FF5A00;
+  --color-brand-hh-hover: #e04e00;
+  --color-brand-sj: #1E6BD0;
+  --color-brand-sj-hover: #1a5fb8;
+
+  --color-background: #F8FAFC;
+  --color-background-hover: #F1F5F9;
+  --color-background-active: #E2E8F0;
+
+  --color-foreground: #0F172A;
+  --color-foreground-secondary: #475569;
+  --color-foreground-tertiary: #64748B;
+  --color-foreground-disabled: #94A3B8;
+
+  --color-muted: #E9EEF5;
+  --color-muted-hover: #E2E8F0;
+
+  --color-border: #CBD5E1;
+  --color-border-light: #E2E8F0;
+  --color-border-dark: #94A3B8;
+
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F8FAFC;
+  --color-surface-active: #F1F5F9;
+
+  --color-overlay: rgba(15, 23, 42, 0.8);
+  --color-overlay-light: rgba(15, 23, 42, 0.5);
+
+  --color-ring: rgba(30, 58, 95, 0.5);
+
+  --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.1), 0 1px 2px -1px rgba(15, 23, 42, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-primary: #3B5A85;
+    --color-primary-hover: #4A6B98;
+    --color-primary-light: #5A7AA8;
+
+    --color-secondary: #3B82F6;
+    --color-secondary-hover: #60A5FA;
+    --color-secondary-light: #93C5FD;
+
+    --color-accent: #22C55E;
+    --color-accent-hover: #4ADE80;
+    --color-accent-light: #86EFAC;
+
+    --color-destructive: #EF4444;
+    --color-destructive-hover: #F87171;
+    --color-destructive-light: #FCA5A5;
+
+    --color-warning: #FBBF24;
+    --color-warning-hover: #FCD34D;
+    --color-warning-light: #FDE68A;
+
+    --color-info: #60A5FA;
+    --color-info-hover: #93C5FD;
+    --color-info-light: #BFDBFE;
+
+    --color-success: #34D399;
+    --color-success-hover: #6EE7B7;
+    --color-success-light: #A7F3D0;
+
+    --color-brand-hh: #FF7849;
+    --color-brand-hh-hover: #FF5A00;
+    --color-brand-sj: #3B82F6;
+    --color-brand-sj-hover: #60A5FA;
+
+    --color-background: #0F172A;
+    --color-background-hover: #1E293B;
+    --color-background-active: #334155;
+
+    --color-foreground: #F8FAFC;
+    --color-foreground-secondary: #CBD5E1;
+    --color-foreground-tertiary: #94A3B8;
+    --color-foreground-disabled: #64748B;
+
+    --color-muted: #1E293B;
+    --color-muted-hover: #334155;
+
+    --color-border: #334155;
+    --color-border-light: #475569;
+    --color-border-dark: #64748B;
+
+    --color-surface: #1E293B;
+    --color-surface-hover: #334155;
+    --color-surface-active: #475569;
+
+    --color-overlay: rgba(255, 255, 255, 0.9);
+    --color-overlay-light: rgba(255, 255, 255, 0.6);
+
+    --color-ring: rgba(59, 130, 246, 0.5);
+
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+  }
+}

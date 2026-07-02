@@ -15,23 +15,21 @@
       align-items: center;
       justify-content: center;
       padding: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--primary);
       color: white;
-      border: 2px solid white;
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-      transition: all 0.3s ease;
+      border: 2px solid var(--surface);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+      transition: var(--transition);
       
       &:hover {
-        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         transform: scale(1.1);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
       }
       
       &:active {
         transform: scale(0.95);
       }
       
-      // Уменьшаем размер иконки и центрируем
       ::ng-deep .p-button-icon {
         font-size: 1.2rem !important;
         margin: 0 !important;
@@ -49,11 +47,11 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #ef4444;
-        border: 1px solid white;
+        background: var(--danger);
+        border: 1px solid var(--surface);
         
         &.connected {
-          background: #10b981;
+          background: var(--success);
         }
       }
     }
@@ -75,7 +73,6 @@
     }
   }
   
-  // Стили для кнопки выхода
   ::ng-deep .p-button.p-button-rounded {
     width: 40px;
     height: 40px;
@@ -102,19 +99,19 @@
     
     .pi-globe {
       font-size: 1.5rem !important;
-      color: #6b7280;
+      color: var(--text-secondary);
     }
     
     &:hover {
-      background-color: #f3f4f6 !important;
+      background-color: var(--surface-hover) !important;
       
       .pi-globe {
-        color: #3b82f6;
+        color: var(--primary);
       }
     }
     
     &:focus {
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
     }
   }
   
@@ -122,10 +119,10 @@
     position: absolute;
     top: 100%;
     right: 0;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
     min-width: 180px;
     z-index: 1000;
     display: none;
@@ -137,10 +134,10 @@
     
     .dropdown-header {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid var(--border);
       font-weight: 600;
-      background: #f9fafb;
-      color: #374151;
+      background: var(--surface-hover);
+      color: var(--text-primary);
     }
     
     .language-list {
@@ -155,11 +152,11 @@
       transition: background-color 0.2s;
       
       &:hover {
-        background-color: #f3f4f6;
+        background-color: var(--surface-hover);
       }
       
       &.active {
-        background-color: #3b82f6;
+        background-color: var(--primary);
         color: white;
         
         .flag-icon {
@@ -174,12 +171,12 @@
       .flag-icon {
         margin-right: 0.75rem;
         font-size: 1.1rem;
-        color: #6b7280;
+        color: var(--text-secondary);
       }
       
       .language-name {
         font-size: 0.875rem;
-        color: #374151;
+        color: var(--text-primary);
       }
     }
   }
@@ -202,11 +199,10 @@
 
 .user-info .mr-3 {
   margin-right: 0.75rem;
-  color: #374151;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
-// Исправление для иконки AI - центрирование
 ::ng-deep .ai-trigger .p-button-icon {
   display: flex !important;
   align-items: center !important;
@@ -216,7 +212,6 @@
   font-size: 1.2rem !important;
 }
 
-// Глобальные стили для консистентности
 * {
   box-sizing: border-box;
 }
@@ -224,35 +219,34 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
+  color: var(--text-primary);
+  background-color: var(--background);
 }
 
-// Консистентные стили для карточек
 .p-card {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  border-radius: 8px !important;
-  border: 1px solid #e9ecef !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
   
   .p-card-header {
-    background: #f8f9fa !important;
-    border-bottom: 1px solid #e9ecef !important;
+    background: var(--surface-hover) !important;
+    border-bottom: 1px solid var(--border) !important;
     font-weight: 600 !important;
-    color: #2c3e50 !important;
+    color: var(--text-primary) !important;
   }
 }
 
-// Консистентные стили для кнопок
 .p-button {
-  border-radius: 6px !important;
+  border-radius: var(--radius-sm) !important;
   font-weight: 500 !important;
-  transition: all 0.3s ease !important;
+  transition: var(--transition) !important;
   
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
   }
   
   &:active {
@@ -260,31 +254,37 @@ body {
   }
 }
 
-// Консистентные стили для полей ввода
 .p-inputtext, .p-dropdown, .p-calendar, .p-inputnumber {
   width: 100% !important;
-  border-radius: 6px !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  
+  &::placeholder {
+    color: var(--text-tertiary) !important;
+  }
   
   &:focus {
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
-    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+    border-color: var(--primary) !important;
   }
 }
 
-// Консистентные стили для диалогов
 .p-dialog {
   .p-dialog-header {
-    background: #f8f9fa !important;
-    border-bottom: 1px solid #e9ecef !important;
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border) !important;
     font-weight: 600 !important;
+    color: var(--text-primary) !important;
   }
   
   .p-dialog-content {
     padding: 1.5rem !important;
+    background: var(--surface) !important;
   }
 }
 
-// Адаптивность
 @media (max-width: 768px) {
   .p-dialog {
     width: 95vw !important;
@@ -295,17 +295,18 @@ body {
     margin: 0.5rem !important;
   }
 }
+
 .app-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: var(--surface-ground);
+  background: var(--background);
   
   p {
     margin-top: 1rem;
-    color: var(--text-color-secondary);
+    color: var(--text-secondary);
   }
 }
 

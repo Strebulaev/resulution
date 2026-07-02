@@ -1,212 +1,212 @@
 .cookies-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #2c3e50;
-    color: white;
-    z-index: 9999;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-  
-    .cookies-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-  
-      .cookies-text {
-        flex: 1;
-        margin-right: 20px;
-  
-        h3 {
-          margin: 0 0 10px 0;
-          font-size: 1.2rem;
-        }
-  
-        p {
-          margin: 0;
-          line-height: 1.5;
-          font-size: 0.9rem;
-  
-          a {
-            color: #3498db;
-            text-decoration: underline;
-  
-            &:hover {
-              color: #2980b9;
-            }
-          }
-        }
-      }
-  
-      .cookies-actions {
-        display: flex;
-        gap: 10px;
-        flex-shrink: 0;
-  
-        button {
-          padding: 10px 20px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          font-size: 0.9rem;
-          transition: all 0.3s ease;
-  
-          &.btn-accept {
-            background: #27ae60;
-            color: white;
-  
-            &:hover {
-              background: #219a52;
-            }
-          }
-  
-          &.btn-settings {
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-  
-            &:hover {
-              background: rgba(255, 255, 255, 0.1);
-            }
-          }
-  
-          &.btn-reject {
-            background: #e74c3c;
-            color: white;
-  
-            &:hover {
-              background: #c0392b;
-            }
-          }
-        }
-      }
-    }
-  
-    .cookies-settings {
-      background: #34495e;
-      border-top: 1px solid #4a6278;
-  
-      .settings-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-  
-        h4 {
-          margin: 0 0 20px 0;
-          color: white;
-        }
-  
-        .setting-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 20px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid #4a6278;
-  
-          &:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-          }
-  
-          .setting-info {
-            flex: 1;
-            margin-right: 20px;
-  
-            h5 {
-              margin: 0 0 5px 0;
-              color: white;
-              font-size: 1rem;
-            }
-  
-            p {
-              margin: 0;
-              color: #bdc3c7;
-              font-size: 0.85rem;
-              line-height: 1.4;
-            }
-          }
-  
-          .setting-toggle {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-  
-            input[type="checkbox"] {
-              margin-right: 8px;
-              transform: scale(1.2);
-            }
-  
-            label {
-              color: white;
-              font-size: 0.9rem;
-              cursor: pointer;
-            }
-          }
-        }
-  
-        .settings-actions {
-          text-align: right;
-          margin-top: 20px;
-  
-          .btn-save {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-  
-            &:hover {
-              background: #2980b9;
-            }
-          }
-        }
-      }
-    }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-foreground);
+  color: var(--color-on-primary);
+  z-index: var(--z-index-modal);
+  box-shadow: var(--shadow-lg);
+}
+
+.cookies-banner .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-5);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cookies-banner .text {
+  flex: 1;
+  margin-right: var(--spacing-5);
+}
+
+.cookies-banner .text h3 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-lg);
+}
+
+.cookies-banner .text p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+  font-size: var(--font-size-sm);
+}
+
+.cookies-banner .text a {
+  color: var(--color-info);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.cookies-banner .text a:hover {
+  color: var(--color-info-hover);
+  text-decoration: underline;
+}
+
+.cookies-banner .actions {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-shrink: 0;
+}
+
+.cookies-banner .action {
+  padding: var(--spacing-2) var(--spacing-5);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-base);
+}
+
+.cookies-banner .action--accept {
+  background: var(--color-success);
+  color: var(--color-on-primary);
+}
+
+.cookies-banner .action--accept:hover {
+  background: var(--color-success-hover);
+}
+
+.cookies-banner .action--settings {
+  background: transparent;
+  color: var(--color-on-primary);
+  border: 1px solid var(--color-on-primary);
+}
+
+.cookies-banner .action--settings:hover {
+  background: var(--color-overlay-light);
+}
+
+.cookies-banner .action--reject {
+  background: var(--color-destructive);
+  color: var(--color-on-primary);
+}
+
+.cookies-banner .action--reject:hover {
+  background: var(--color-destructive-hover);
+}
+
+.cookies-banner .settings {
+  background: var(--color-foreground-secondary);
+  border-top: 1px solid var(--color-overlay);
+}
+
+.cookies-banner .settings-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-5);
+}
+
+.cookies-banner .settings-content h4 {
+  margin: 0 0 var(--spacing-5) 0;
+  color: var(--color-on-primary);
+}
+
+.cookies-banner .setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-5);
+  padding-bottom: var(--spacing-5);
+  border-bottom: 1px solid var(--color-overlay);
+}
+
+.cookies-banner .setting:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cookies-banner .setting-info {
+  flex: 1;
+  margin-right: var(--spacing-5);
+}
+
+.cookies-banner .setting-info h5 {
+  margin: 0 0 var(--spacing-1) 0;
+  color: var(--color-on-primary);
+  font-size: var(--font-size-base);
+}
+
+.cookies-banner .setting-info p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.cookies-banner .setting-toggle {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cookies-banner .setting-toggle input[type="checkbox"] {
+  margin-right: var(--spacing-2);
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.cookies-banner .setting-toggle label {
+  color: var(--color-on-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.cookies-banner .settings-actions {
+  text-align: right;
+  margin-top: var(--spacing-5);
+}
+
+.cookies-banner .settings-save {
+  background: var(--color-info);
+  color: var(--color-on-primary);
+  border: none;
+  padding: var(--spacing-2) var(--spacing-5);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: background var(--transition-base);
+}
+
+.cookies-banner .settings-save:hover {
+  background: var(--color-info-hover);
+}
+
+@media (max-width: 768px) {
+  .cookies-banner .content {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--spacing-4);
   }
-  
-  // Адаптивность
-  @media (max-width: 768px) {
-    .cookies-banner {
-      .cookies-content {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-  
-        .cookies-text {
-          margin-right: 0;
-          margin-bottom: 15px;
-        }
-  
-        .cookies-actions {
-          width: 100%;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-      }
-  
-      .cookies-settings {
-        .settings-content {
-          .setting-item {
-            flex-direction: column;
-            align-items: flex-start;
-  
-            .setting-info {
-              margin-right: 0;
-              margin-bottom: 10px;
-            }
-  
-            .setting-toggle {
-              align-self: flex-end;
-            }
-          }
-        }
-      }
-    }
+
+  .cookies-banner .text {
+    margin-right: 0;
+    margin-bottom: var(--spacing-4);
   }
+
+  .cookies-banner .actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cookies-banner .setting {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cookies-banner .setting-info {
+    margin-right: 0;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .cookies-banner .setting-toggle {
+    align-self: flex-end;
+  }
+}
+
