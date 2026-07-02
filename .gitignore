@@ -137,3 +137,6 @@ server/
 # Temporary files
 *.tmp
 *.temp
+
+# Disabled API functions (not pushed)
+.disabled-api/

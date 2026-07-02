@@ -11,8 +11,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.redirect(`${process.env['FRONTEND_URL'] || 'http://localhost:4200'}/profile?sj_error=no_code`);
   }
 
-  // Redirect back to frontend with the code
-  // Frontend will handle the token exchange
   const redirectUrl = `${process.env['FRONTEND_URL'] || 'http://localhost:4200'}/profile?sj_code=${code}${state ? `&state=${state}` : ''}`;
 
   return res.redirect(redirectUrl);
